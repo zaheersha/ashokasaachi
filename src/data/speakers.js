@@ -138,7 +138,7 @@ export const speakers = [
   },
 {
   id: "visha-ferrer",
-  name: "Vishala Ferrer",
+  name: "Ms. Vishala Ferrer",
   role: "Director – Women Empowerment Sector",
   org: "Rural Development Trust (RDT)",
   category: "Social Impact Leader",
