@@ -7,7 +7,7 @@ function WhatsappFloat() {
 
   // ✅ Prefilled message
   const message = encodeURIComponent(
-    "Hi I'm interested to know more about Saachi and process can you please guide me"
+    "Hi I'm interested to nominate myself...\nCould you please guide me!!"
   );
 
   const whatsappLink = `https://wa.me/917893667606?text=${message}`;
@@ -56,3 +56,4 @@ function WhatsappFloat() {
 }
 
 export default WhatsappFloat;
+
