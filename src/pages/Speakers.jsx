@@ -32,115 +32,58 @@ function TopSpeakerCard({ speaker }) {
 
   return (
     <>
-      {/* =========================================
-          MOBILE VIEW (Flip Card) - Visible < lg
-         ========================================= */}
-      <div 
-        className="group relative h-[500px] w-full lg:hidden perspective-[1000px]"
-        onClick={() => setIsFlipped(!isFlipped)}
-      >
-        <div className={`relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] rounded-3xl shadow-xl ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}>
-          
-          {/* --- FRONT FACE (Image) --- */}
-          <div className="absolute inset-0 h-full w-full rounded-3xl overflow-hidden [backface-visibility:hidden]">
-            <img
-              src={speaker.image}
-              alt={speaker.name}
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent" />
-            
-            {/* Tap hint */}
-            <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full px-3 py-1 text-xs text-white border border-white/30">
-               {isFlipped ? 'Tap to close' : 'Tap for details'}
-            </div>
+    <div className="absolute inset-0 h-full w-full rounded-3xl bg-white p-8 
+[transform:rotateY(180deg)] 
+[backface-visibility:hidden] 
+overflow-y-auto overscroll-contain 
+[&::-webkit-scrollbar]:hidden 
+[scrollbar-width:none] 
+[-ms-overflow-style:none]">
 
-            {/* Basic info overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-             
-              <h3 className="mt-3 text-2xl font-bold">{speaker.name}</h3>
-              <p className="mt-1 text-sm text-white/90">{speaker.role}</p>
-              {speaker.org && (
-                <p className="flex items-center gap-1.5 text-xs text-white/80 mt-1.5">
-                  <Briefcase size={12} />
-                  {speaker.org}
-                </p>
-              )}
-<br />
-              {/* Know More Button with Link */}
-{speaker.website && (
-  <a
-    href={speaker.website}
-    target="_blank"
-    rel="noopener noreferrer"
-    onClick={(e) => e.stopPropagation()}   // ✅ prevents card flip
-    className="inline-block rounded-full bg-copper/90 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur-sm hover:bg-copper transition"
-  >
-    Know More
-  </a>
-)}
+  <div className="flex flex-col min-h-full gap-6">
 
-            </div>
-          </div>
+    <div>
+      <h3 className="text-2xl font-bold text-ink">{speaker.name}</h3>
+      <p className="text-copper font-semibold mt-1">{speaker.role}</p>
+    </div>
 
-          {/* --- BACK FACE (Details) --- */}
-          {/* FIXES APPLIED:
-              1. Added [&::-webkit-scrollbar]:hidden, [scrollbar-width:none], [-ms-overflow-style:none] to hide visual scrollbar.
-              2. Removed LinkedIn Button.
-              3. Changed inner layout to use 'gap-6' and 'justify-center' for better vertical alignment.
-          */}
-          <div className="absolute inset-0 h-full w-full rounded-3xl bg-white p-8 [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-y-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]">
-             <div className="flex flex-col h-full justify-center gap-6">
-                
-                {/* Header */}
-                <div>
-                  <h3 className="text-2xl font-bold text-ink">{speaker.name}</h3>
-                  <p className="text-copper font-semibold mt-1">{speaker.role}</p>
-                </div>
+    <div>
+      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-copper/80">
+        Signature Focus
+      </span>
+      <p className="mt-3 text-sm italic text-ink/80 leading-relaxed bg-copper/5 p-4 rounded-2xl">
+        "{speaker.message}"
+      </p>
+    </div>
 
-                {/* Signature Focus */}
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-copper/80">
-                    Signature Focus
-                  </span>
-                  <p className="mt-3 text-sm italic text-ink/80 leading-relaxed bg-copper/5 p-4 rounded-2xl">
-                    "{speaker.message}"
-                  </p>
-                </div>
+    <div>
+      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-copper/80">
+        About
+      </span>
+      <p className="mt-2 text-sm text-ink/70 leading-relaxed">
+        {speaker.bio}
+      </p>
+    </div>
 
-                {/* Bio */}
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-copper/80">
-                    About
-                  </span>
-                  <p className="mt-2 text-sm text-ink/70 leading-relaxed">
-                    {speaker.bio}
-                  </p>
-                </div>
-
-                {/* Achievements */}
-                {speaker.achievements?.length > 0 && (
-                  <div>
-                    <span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-copper/80 mb-3">
-                      <Award size={14} />
-                      Key Achievements
-                    </span>
-                    <ul className="space-y-2">
-                      {speaker.achievements.slice(0, 3).map((achievement, index) => (
-                        <li key={index} className="flex items-start gap-3 text-sm text-ink/70">
-                          <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-copper flex-shrink-0" />
-                          <span>{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-             </div>
-          </div>
-        </div>
+    {speaker.achievements?.length > 0 && (
+      <div>
+        <span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-copper/80 mb-3">
+          <Award size={14} />
+          Key Achievements
+        </span>
+        <ul className="space-y-2">
+          {speaker.achievements.slice(0, 3).map((achievement, index) => (
+            <li key={index} className="flex items-start gap-3 text-sm text-ink/70">
+              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-copper flex-shrink-0" />
+              <span>{achievement}</span>
+            </li>
+          ))}
+        </ul>
       </div>
+    )}
+
+  </div>
+</div>
 
       {/* =========================================
           DESKTOP VIEW (Hover Slide) - Visible >= lg
