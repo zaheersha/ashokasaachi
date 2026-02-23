@@ -52,13 +52,12 @@ function Footer() {
 
           <ul className="mt-4 space-y-2 text-sm text-white/70 leading-relaxed">
             <li>
-              NH 7, Opp Dupadu Railway Station,  
-              P2R4+2X5 Lakshmipuram Post,  
+              NH 44, Opp Dupadu Railway Station, 
               Dupadu, Kurnool, Andhra Pradesh 518002
             </li>
 
             <li>saachiawards.ashoka@gmail.com</li>
-            <li>+91 78936 67606</li>
+            <li>+91 77999 99315</li>
           </ul>
         </div>
 
