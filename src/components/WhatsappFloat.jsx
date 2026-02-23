@@ -10,7 +10,7 @@ function WhatsappFloat() {
     "Hi I'm interested to nominate myself...\nCould you please guide me!!"
   );
 
-  const whatsappLink = `https://wa.me/917893667606?text=${message}`;
+  const whatsappLink = `https://wa.me/917799999315?text=${message}`;
   if (!open) return null;
 
   return (
@@ -56,4 +56,5 @@ function WhatsappFloat() {
 }
 
 export default WhatsappFloat;
+
 
