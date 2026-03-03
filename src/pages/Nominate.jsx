@@ -166,12 +166,11 @@ function Nominate() {
 <Card className="border-none bg-gradient-to-br from-ink to-ink/95 p-8 shadow-xl">
 
   <p className="text-xs uppercase tracking-[0.2em] text-copper">
-    Gallery
+    SAACHI
   </p>
 
   <h3 className="mt-3 text-2xl font-semibold text-white">
-    Awards & Recognition
-  </h3>
+Speaker Highlight's  </h3>
 
   <div className="mt-6">
 
